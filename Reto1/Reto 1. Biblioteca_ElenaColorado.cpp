@@ -2,18 +2,15 @@
 #include <string>
 #include <vector>
 
-// --- Definición de la clase Libro (mejorada) ---
 class Libro {
 public:
     std::string titulo;
     std::string autor;
     int anioPublicacion;
-    bool estaDisponible; // Nuevo atributo
+    bool estaDisponible; 
 
-    // Constructor para inicializar los valores fácilmente
     Libro() : anioPublicacion(0), estaDisponible(true) {}
 
-    // Método para mostrar todos los detalles del libro
     void mostrarDetallesCompletos() {
         std::cout << "-----------------------------\n";
         std::cout << "Título: " << titulo << "\n";
@@ -23,13 +20,11 @@ public:
     }
 };
 
-// --- Definición de la clase Biblioteca ---
 class Biblioteca {
 private:
     std::vector<Libro> coleccion;
 
 public:
-    // Añadir un libro (con validación para evitar duplicados)
     void agregarLibro(const Libro& nuevoLibro) {
         for (const auto& libro : coleccion) {
             if (libro.titulo == nuevoLibro.titulo) {
@@ -41,7 +36,6 @@ public:
         std::cout << "Libro agregado exitosamente.\n";
     }
 
-    // Mostrar todos los libros del inventario
     void mostrarInventario() {
         if (coleccion.empty()) {
             std::cout << "La biblioteca está vacía.\n";
@@ -52,7 +46,6 @@ public:
         }
     }
 
-    // Buscar un libro por título
     Libro* buscarLibro(const std::string& tituloBuscado) {
         for (auto& libro : coleccion) {
             if (libro.titulo == tituloBuscado) {
@@ -62,7 +55,6 @@ public:
         return nullptr;
     }
 
-    // Prestar un libro
     void prestarLibro(const std::string& tituloPrestamo) {
         Libro* libro = buscarLibro(tituloPrestamo);
         if (libro == nullptr) {
@@ -75,7 +67,6 @@ public:
         }
     }
 
-    // Devolver un libro
     void devolverLibro(const std::string& tituloDevolucion) {
         Libro* libro = buscarLibro(tituloDevolucion);
         if (libro == nullptr) {
@@ -89,12 +80,10 @@ public:
     }
 };
 
-// --- Función Principal con el Menú ---
 int main() {
     Biblioteca miBiblioteca;
     int opcion = 0;
 
-    // Agregar algunos libros de ejemplo para empezar
     Libro libroInicial;
     libroInicial.titulo = "El Hobbit";
     libroInicial.autor = "J.R.R. Tolkien";
@@ -111,7 +100,6 @@ int main() {
         std::cout << "Seleccione una opción: ";
         std::cin >> opcion;
 
-        // Limpiar el buffer de entrada para futuras lecturas de texto
         std::cin.ignore();
 
         if (opcion == 1) {
