@@ -12,11 +12,11 @@ public:
     Libro() : anioPublicacion(0), estaDisponible(true) {}
 
     void mostrarDetallesCompletos() {
-        std::cout << "-----------------------------\n";
-        std::cout << "Título: " << titulo << "\n";
-        std::cout << "Autor: " << autor << "\n";
-        std::cout << "Año de publicación: " << anioPublicacion << "\n";
-        std::cout << "Disponibilidad: " << (estaDisponible ? "Disponible" : "Prestado") << "\n";
+        std::cout << "-----------------------------" << std::endl;
+        std::cout << "Título: " << titulo << std::endl;
+        std::cout << "Autor: " << autor << std::endl;
+        std::cout << "Año de publicación: " << anioPublicacion << std::endl;
+        std::cout << "Disponibilidad: " << (estaDisponible ? "Disponible" : "Prestado") << std::endl;
     }
 };
 
@@ -28,17 +28,17 @@ public:
     void agregarLibro(const Libro& nuevoLibro) {
         for (const auto& libro : coleccion) {
             if (libro.titulo == nuevoLibro.titulo) {
-                std::cout << "Ya existe un libro con ese título.\n";
+                std::cout << "Ya existe un libro con ese título." << std::endl;
                 return;
             }
         }
         coleccion.push_back(nuevoLibro);
-        std::cout << "Libro agregado exitosamente.\n";
+        std::cout << "Libro agregado." << std::endl;
     }
 
     void mostrarInventario() {
         if (coleccion.empty()) {
-            std::cout << "La biblioteca está vacía.\n";
+            std::cout << "La biblioteca está vacía." << std::endl;
             return;
         }
         for (const auto& libro : coleccion) {
@@ -58,24 +58,24 @@ public:
     void prestarLibro(const std::string& tituloPrestamo) {
         Libro* libro = buscarLibro(tituloPrestamo);
         if (libro == nullptr) {
-            std::cout << "Libro no encontrado.\n";
+            std::cout << "Libro no encontrado." << std::endl;
         } else if (!libro->estaDisponible) {
-            std::cout << "El libro ya está prestado.\n";
+            std::cout << "El libro ya está prestado." << std::endl;
         } else {
             libro->estaDisponible = false;
-            std::cout << "Libro prestado exitosamente.\n";
+            std::cout << "Libro prestado." << std::endl;
         }
     }
 
     void devolverLibro(const std::string& tituloDevolucion) {
         Libro* libro = buscarLibro(tituloDevolucion);
         if (libro == nullptr) {
-            std::cout << "Libro no encontrado.\n";
+            std::cout << "Libro no encontrado." << std::endl;
         } else if (libro->estaDisponible) {
-            std::cout << "Ese libro ya estaba disponible.\n";
+            std::cout << "Ese libro ya estaba disponible." << std::endl;
         } else {
             libro->estaDisponible = true;
-            std::cout << "Libro devuelto exitosamente.\n";
+            std::cout << "Libro devuelto." << std::endl;
         }
     }
 };
@@ -91,24 +91,24 @@ int main() {
     miBiblioteca.agregarLibro(libroInicial);
 
     while (opcion != 5) {
-        std::cout << "\n--- BIBLIOTECA DIGITAL ---" << std::endl;
+        std::cout << "--- BIBLIOTECA DIGITAL ---" << std::endl;
         std::cout << "1. Añadir libro" << std::endl;
         std::cout << "2. Mostrar inventario" << std::endl;
         std::cout << "3. Prestar libro" << std::endl;
         std::cout << "4. Devolver libro" << std::endl;
         std::cout << "5. Salir" << std::endl;
-        std::cout << "Seleccione una opción: ";
+        std::cout << "Selecciona una opción: ";
         std::cin >> opcion;
 
         std::cin.ignore();
 
         if (opcion == 1) {
             Libro nuevoLibro;
-            std::cout << "Ingrese título del libro: ";
+            std::cout << "Ingresa el título del libro: ";
             std::getline(std::cin, nuevoLibro.titulo);
-            std::cout << "Ingrese autor del libro: ";
+            std::cout << "Ingresa el autor del libro: ";
             std::getline(std::cin, nuevoLibro.autor);
-            std::cout << "Ingrese año de publicación: ";
+            std::cout << "Ingresa el año de publicación: ";
             std::cin >> nuevoLibro.anioPublicacion;
             std::cin.ignore();
             miBiblioteca.agregarLibro(nuevoLibro);
@@ -118,21 +118,21 @@ int main() {
         }
         else if (opcion == 3) {
             std::string titulo;
-            std::cout << "Ingrese el título del libro a prestar: ";
+            std::cout << "Ingrese el título del libro que quiere prestar: ";
             std::getline(std::cin, titulo);
             miBiblioteca.prestarLibro(titulo);
         }
         else if (opcion == 4) {
             std::string titulo;
-            std::cout << "Ingrese el título del libro a devolver: ";
+            std::cout << "Ingrese el título del libro que va a devolver: ";
             std::getline(std::cin, titulo);
             miBiblioteca.devolverLibro(titulo);
         }
         else if (opcion == 5) {
-            std::cout << "¡Hasta luego!" << std::endl;
+            std::cout << "¡Adios!" << std::endl;
         }
         else {
-            std::cout << "Opción no válida. Intente nuevamente." << std::endl;
+            std::cout << "La opción no es válida. Intenta de nuevo." << std::endl;
         }
     }
 
