@@ -27,13 +27,8 @@ Los archivos pueden comenzar vacíos; el programa los crea/actualiza al Guardar 
   # Compilar
   g++ -std=c++17 Reto3_Biblioteca.cpp -o Reto3.exe
 
-  # Ejecutar (Windows)
+  # Ejecutar 
   Reto3.exe
-
-  # Ejecutar (Linux/Mac)
-  ./Reto3.exe
-
-Ejecuta el binario en la misma carpeta donde están los .txt.
 
 # Funcionalidades (por módulo)
 
